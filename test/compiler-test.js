@@ -30,6 +30,11 @@ tests = {
       b: {type: 'object'}
     }},
     c: {type: 'object'}
+  },
+  'h(!a)': {
+    h: {type:'array', properties: {
+      '!a': {type: 'object'}
+    }}
   }
 }
 

@@ -6,7 +6,7 @@ var compiledMask
 var object
 var expected
 
-// a,b(d/*/z,b(g)),c
+// a,b(d/*/z,b(g)),c,h(!a)
 compiledMask = {
   a: {type: 'object'},
   b: {
@@ -31,7 +31,15 @@ compiledMask = {
       }
     }
   },
-  c: {type: 'object'}
+  c: {type: 'object'},
+  h: {
+    type: 'array',
+    properties: {
+      '!a': {
+        type: 'object'
+      }
+    }
+  }
 }
 
 object = {
@@ -43,7 +51,8 @@ object = {
     k: 99
   }],
   c: 44,
-  g: 99
+  g: 99,
+  h: [{a: 11, b: 22, c: 33}, {a: 44, b: 55, c: 66}]
 }
 
 expected = {
@@ -57,7 +66,8 @@ expected = {
     },
     b: [{}]
   }],
-  c: 44
+  c: 44,
+  h: [{b: 22, c: 33}, {b: 55, c: 66}]
 }
 
 describe('filter', function () {
